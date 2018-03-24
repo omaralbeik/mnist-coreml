@@ -11,6 +11,5 @@
 import UIKit
 import PlaygroundSupport
 
-let liveView = MNISTView(frame: .init(x: 0, y: 0, width: 600, height: 800))
-PlaygroundPage.current.liveView = liveView
+PlaygroundPage.current.liveView = MINSTViewController()
 PlaygroundPage.current.needsIndefiniteExecution = true

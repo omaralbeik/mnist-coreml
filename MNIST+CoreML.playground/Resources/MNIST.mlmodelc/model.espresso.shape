@@ -1,7 +1,7 @@
 {
   "layer_shapes" : {
-    "dense_6_output" : {
-      "k" : 10,
+    "flatten_13_output" : {
+      "k" : 9216,
       "w" : 1,
       "n" : 1,
       "h" : 1
@@ -12,17 +12,17 @@
       "n" : 1,
       "h" : 1
     },
-    "dense_5__activation___output" : {
+    "dense_25__activation___output" : {
       "k" : 128,
       "w" : 1,
       "n" : 1,
       "h" : 1
     },
-    "conv2d_6__activation___output" : {
-      "k" : 64,
-      "w" : 24,
+    "dense_26_output" : {
+      "k" : 10,
+      "w" : 1,
       "n" : 1,
-      "h" : 24
+      "h" : 1
     },
     "image" : {
       "k" : 1,
@@ -30,23 +30,23 @@
       "n" : 1,
       "h" : 28
     },
-    "conv2d_5__activation___output" : {
-      "k" : 32,
-      "w" : 26,
+    "conv2d_32__activation___output" : {
+      "k" : 64,
+      "w" : 24,
       "n" : 1,
-      "h" : 26
+      "h" : 24
     },
-    "flatten_3_output" : {
-      "k" : 9216,
-      "w" : 1,
-      "n" : 1,
-      "h" : 1
-    },
-    "max_pooling2d_3_output" : {
+    "max_pooling2d_24_output" : {
       "k" : 64,
       "w" : 12,
       "n" : 1,
       "h" : 12
+    },
+    "conv2d_31__activation___output" : {
+      "k" : 32,
+      "w" : 26,
+      "n" : 1,
+      "h" : 26
     }
   }
 }

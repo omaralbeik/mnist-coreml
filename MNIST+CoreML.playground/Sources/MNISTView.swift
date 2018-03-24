@@ -11,12 +11,6 @@ import CoreML
 
 public class MNISTView: View {
 
-	private var lastPoint: CGPoint = .zero
-
-	private var brushWidth: CGFloat {
-		return min(frame.size.width, frame.size.height) / 38.0
-	}
-
 	var titleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +91,12 @@ public class MNISTView: View {
 		return label
 	}()
 
+	var showAllButton: Button = {
+		let button = Button(image: UIImage(named: "img_show_all_button"), title: "Show all probabilities", color: UIColor(hex: 0x232321)!)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
+
 	override public func setViews() {
 		super.setViews()
 
@@ -113,9 +113,6 @@ public class MNISTView: View {
 		buttonsStackView.addArrangedSubview(clearButton)
 		buttonsStackView.addArrangedSubview(predictButton)
 
-		clearButton.addTarget(self, action: #selector(didTapClearButton), for: .touchUpInside)
-		predictButton.addTarget(self, action: #selector(didTapPredictButton), for: .touchUpInside)
-
 		addSubview(buttonsStackView)
 
 		addSubview(resultLabel)
@@ -123,10 +120,14 @@ public class MNISTView: View {
 
 		addSubview(accuracyLabel)
 		accuracyLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+
+		showAllButton.alpha = 0
+		addSubview(showAllButton)
+		showAllButton.setContentCompressionResistancePriority(.required, for: .vertical)
 	}
 
 	override public func layoutViews() {
-		titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: preferredPadding).isActive = true
+		titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: preferredPadding * 2).isActive = true
 		titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 		titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
 
@@ -160,92 +161,12 @@ public class MNISTView: View {
 		accuracyLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor).isActive = true
 		accuracyLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
 		accuracyLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-		accuracyLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -preferredPadding).isActive = true
-	}
 
-	override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		guard let touch = touches.first else { return }
-
-		if touch.isInView(canvasImageView) {
-			placeholderView.setHidden(true)
-		}
-
-		lastPoint = touch.location(in: self.canvasImageView)
-	}
-
-	override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-		guard let touch = touches.first else { return }
-		let currentPoint = touch.location(in: canvasImageView)
-		drawLine(from: lastPoint, to: currentPoint)
-
-		if touch.isInView(canvasImageView) {
-			placeholderView.setHidden(true)
-		}
-
-		lastPoint = currentPoint
-	}
-
-}
-
-// MARK: - Actions
-private extension MNISTView {
-
-	@objc func didTapClearButton() {
-		canvasImageView.image = nil
-		self.resultLabel.text = ""
-		self.accuracyLabel.text = ""
-		placeholderView.setHidden(false)
-
-		UIView.animate(withDuration: 0.25) {
-			self.layoutIfNeeded()
-		}
-	}
-
-	@objc func didTapPredictButton() {
-		let size = CGSize(width: 28, height: 28)
-		let image = canvasImageView.image?.resize(to: size)
-		guard let buffer = image?.resize(to: size)?.pixelBuffer() else { return }
-		guard let result = try? MNIST().prediction(image: buffer) else { return }
-
-		let digit = result.classLabel
-		let accuracy = result.output[digit]
-
-		self.updateLabels(digit: digit, accuracy: accuracy)
-	}
-
-}
-
-// MARK: - Helpers
-private extension MNISTView {
-
-	func updateLabels(digit: String, accuracy: Double?) {
-		resultLabel.text = "Prediction: \(digit)"
-
-		if let anAccuracy = accuracy {
-			accuracyLabel.text = "Accuracy: \(anAccuracy)"
-		}
-
-		UIView.animate(withDuration: 0.25) {
-			self.layoutIfNeeded()
-		}
-	}
-
-	func drawLine(from point1: CGPoint, to point2: CGPoint) {
-		UIGraphicsBeginImageContextWithOptions(canvasImageView.frame.size, true, 1)
-		let context = UIGraphicsGetCurrentContext()
-		canvasImageView.image?.draw(in: .init(origin: .zero, size: canvasImageView.frame.size))
-
-		context?.move(to: point1)
-		context?.addLine(to: point2)
-		context?.setLineCap(.round)
-		context?.setLineWidth(brushWidth)
-		context?.setStrokeColor(red: 1, green: 1, blue: 1, alpha: 1)
-		context?.setBlendMode(.normal)
-		context?.strokePath()
-
-		canvasImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-		canvasImageView.alpha = 1
-		UIGraphicsEndImageContext()
+		showAllButton.topAnchor.constraint(equalTo: accuracyLabel.bottomAnchor, constant: preferredPadding).isActive = true
+		showAllButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		showAllButton.leadingAnchor.constraint(equalTo: buttonsStackView.leadingAnchor).isActive = true
+		showAllButton.trailingAnchor.constraint(equalTo: buttonsStackView.trailingAnchor).isActive = true
+		showAllButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -preferredPadding).isActive = true
 	}
 
 }

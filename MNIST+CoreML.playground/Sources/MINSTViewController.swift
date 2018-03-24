@@ -19,9 +19,9 @@ public class MINSTViewController: UIViewController {
 	}
 
 	override public func loadView() {
-		view = MNISTView(frame: .init(x: 0, y: 0, width: 600, height: 800))
+		view = MNISTView(frame: .init(x: 0, y: 0, width: 800, height: 900))
 	}
-	
+
 	public var mnistView: MNISTView {
 		return view as! MNISTView
 	}
@@ -99,16 +99,16 @@ private extension MINSTViewController {
 		var message = ""
 
 		for item in result.sortedResult {
-			message += "\(item.key): \(item.value)\n"
+			message += "\(item.key): \(item.value.rounded(toPlaces: 5))\n"
 		}
 
-		let alert = UIAlertController(title: "All Labels", message: message, preferredStyle: .alert)
+		let alert = UIAlertController(title: "All Probabilities", message: message, preferredStyle: .alert)
 		let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
 		alert.addAction(dismissAction)
-		
+
 		present(alert, animated: true, completion: nil)
 	}
-	
+
 }
 
 // MARK: - Helpers
@@ -116,7 +116,7 @@ private extension MINSTViewController {
 
 	func updateLabels(digit: String, accuracy: Double?) {
 		mnistView.resultLabel.text = "Prediction: \(digit)"
-		
+
 		if let anAccuracy = accuracy {
 			mnistView.accuracyLabel.text = "Accuracy: \(anAccuracy)"
 		}
@@ -144,5 +144,5 @@ private extension MINSTViewController {
 		mnistView.canvasImageView.alpha = 1
 		UIGraphicsEndImageContext()
 	}
-	
+
 }

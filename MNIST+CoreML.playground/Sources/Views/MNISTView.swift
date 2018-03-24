@@ -75,7 +75,7 @@ public class MNISTView: View {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textColor = .white
-		label.font = .systemFont(ofSize: 35, weight: .thin)
+		label.font = .systemFont(ofSize: 40, weight: .thin)
 		label.textAlignment = .center
 		label.adjustsFontSizeToFitWidth = true
 		label.minimumScaleFactor = 0.6
@@ -86,7 +86,7 @@ public class MNISTView: View {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textColor = .white
-		label.font = .systemFont(ofSize: 15, weight: .semibold)
+		label.font = .systemFont(ofSize: 12, weight: .semibold)
 		label.textAlignment = .center
 		return label
 	}()
@@ -127,16 +127,16 @@ public class MNISTView: View {
 	}
 
 	override public func layoutViews() {
-		titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: preferredPadding * 2).isActive = true
+		titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: preferredPadding * 1.5).isActive = true
 		titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 		titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
 
 		subtitleImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: preferredPadding * 0.5).isActive = true
-		subtitleImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		subtitleImageView.heightAnchor.constraint(equalToConstant: 45).isActive = true
 		subtitleImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
 		backgroundImageView.topAnchor.constraint(equalTo: subtitleImageView.bottomAnchor, constant: preferredPadding).isActive = true
-		backgroundImageView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.75).isActive = true
+		backgroundImageView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.9).isActive = true
 		backgroundImageView.heightAnchor.constraint(equalTo: backgroundImageView.widthAnchor).isActive = true
 		backgroundImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
@@ -152,7 +152,7 @@ public class MNISTView: View {
 
 		buttonsStackView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: preferredPadding).isActive = true
 		buttonsStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-		buttonsStackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		buttonsStackView.heightAnchor.constraint(equalToConstant: 38).isActive = true
 
 		resultLabel.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: preferredPadding).isActive = true
 		resultLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -163,7 +163,7 @@ public class MNISTView: View {
 		accuracyLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
 		showAllButton.topAnchor.constraint(equalTo: accuracyLabel.bottomAnchor, constant: preferredPadding).isActive = true
-		showAllButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		showAllButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
 		showAllButton.leadingAnchor.constraint(equalTo: buttonsStackView.leadingAnchor).isActive = true
 		showAllButton.trailingAnchor.constraint(equalTo: buttonsStackView.trailingAnchor).isActive = true
 		showAllButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -preferredPadding).isActive = true

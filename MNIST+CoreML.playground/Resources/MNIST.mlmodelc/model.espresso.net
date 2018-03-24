@@ -12,11 +12,11 @@
       "pad_fill_mode" : 0,
       "pad_b" : 0,
       "pad_l" : 0,
-      "top" : "conv2d_1__activation___output",
+      "top" : "conv2d_5__activation___output",
       "blob_weights" : 3,
       "K" : 1,
       "blob_biases" : 1,
-      "name" : "conv2d_1",
+      "name" : "conv2d_5",
       "has_batch_norm" : 0,
       "type" : "convolution",
       "n_groups" : 1,
@@ -40,18 +40,18 @@
       "pad_fill_mode" : 0,
       "pad_b" : 0,
       "pad_l" : 0,
-      "top" : "conv2d_2__activation___output",
+      "top" : "conv2d_6__activation___output",
       "blob_weights" : 7,
       "K" : 32,
       "blob_biases" : 5,
-      "name" : "conv2d_2",
+      "name" : "conv2d_6",
       "has_batch_norm" : 0,
       "type" : "convolution",
       "n_groups" : 1,
       "pad_t" : 0,
       "has_biases" : 1,
       "C" : 64,
-      "bottom" : "conv2d_1__activation___output",
+      "bottom" : "conv2d_5__activation___output",
       "weights" : {
 
       },
@@ -79,25 +79,25 @@
       "pad_b" : 0,
       "size_x" : 2,
       "pad_fill_mode" : 0,
-      "bottom" : "conv2d_2__activation___output",
+      "bottom" : "conv2d_6__activation___output",
       "pad_l" : 0,
-      "name" : "max_pooling2d_1",
-      "top" : "max_pooling2d_1_output"
+      "name" : "max_pooling2d_3",
+      "top" : "max_pooling2d_3_output"
     },
     {
-      "bottom" : "max_pooling2d_1_output",
+      "bottom" : "max_pooling2d_3_output",
       "weights" : {
 
       },
       "mode" : 1,
       "hint_fallback_from_metal" : 1,
-      "top" : "flatten_1_output",
+      "top" : "flatten_3_output",
       "type" : "flatten",
-      "name" : "flatten_1"
+      "name" : "flatten_3"
     },
     {
       "nB" : 9216,
-      "top" : "dense_1__activation___output",
+      "top" : "dense_5__activation___output",
       "has_biases" : 1,
       "weights" : {
 
@@ -106,16 +106,16 @@
       "blob_weights" : 11,
       "type" : "inner_product",
       "has_relu" : 1,
-      "bottom" : "flatten_1_output",
+      "bottom" : "flatten_3_output",
       "blob_biases" : 9,
       "has_tanh" : 0,
       "hint_fallback_from_metal" : 1,
-      "name" : "dense_1",
+      "name" : "dense_5",
       "has_prelu" : 0
     },
     {
       "nB" : 128,
-      "top" : "dense_2_output",
+      "top" : "dense_6_output",
       "has_biases" : 1,
       "weights" : {
 
@@ -124,10 +124,10 @@
       "blob_weights" : 15,
       "type" : "inner_product",
       "has_relu" : 0,
-      "bottom" : "dense_1__activation___output",
+      "bottom" : "dense_5__activation___output",
       "blob_biases" : 13,
       "has_tanh" : 0,
-      "name" : "dense_2",
+      "name" : "dense_6",
       "has_prelu" : 0
     },
     {
@@ -137,8 +137,8 @@
       },
       "top" : "output",
       "type" : "softmax",
-      "name" : "dense_2__activation__",
-      "bottom" : "dense_2_output"
+      "name" : "dense_6__activation__",
+      "bottom" : "dense_6_output"
     }
   ]
 }

@@ -246,8 +246,6 @@ private extension MNISTView {
 		canvasImageView.image = UIGraphicsGetImageFromCurrentImageContext()
 		canvasImageView.alpha = 1
 		UIGraphicsEndImageContext()
-
-		predictButton.sendActions(for: .touchUpInside)
 	}
 
 }

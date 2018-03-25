@@ -85,4 +85,3 @@ Your feedback is always appreciated and welcomed. If you find a bug in the sourc
 ## License 👨‍⚖️
 
 This project is released under the [MIT License](LICENSE)
-*/

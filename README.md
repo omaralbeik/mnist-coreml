@@ -1,5 +1,5 @@
 # MNIST + CoreML
-Simple COVNet to predict handwritten digits using Keras + CoreML built for WWDC '18 scholarship submission
+Simple convolutional neural network to predict handwritten digits using Keras + CoreML built for WWDC '18 scholarship submission
 
 ![MNIST + CoreML](Assets/Demo.gif)
 

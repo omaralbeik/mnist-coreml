@@ -1,7 +1,7 @@
 /*:
 # MNIST + CoreML
 
-Simple COVNet to predict handwritten digits using Keras + CoreML
+Simple convolutional neural network to predict handwritten digits using Keras + CoreML
 
 ---
 

@@ -56,7 +56,7 @@ Our model consists of 12 layers:
 
 The model was created and trained using [Keras](https://keras.io/) (a high-level neural networks API, written in Python)
 
-☝️ Run the [Jupyter notebook](https://github.com/omaralbeik/wwdc18/blob/master/Jupyter/mnist-covnet.ipynb) to train the network on your own device 💯
+☝️ Run the [Jupyter notebook](https://github.com/omaralbeik/mnist-coreml/blob/master/Jupyter/mnist-covnet.ipynb) to train the network on your own device 💯
 
 ---
 
@@ -90,11 +90,11 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 
 ## View the project on Github 🐙
 
-👉 [https://github.com/omaralbeik/wwdc18](https://github.com/omaralbeik/wwdc18)
+👉 [https://github.com/omaralbeik/mnist-coreml](https://github.com/omaralbeik/mnist-coreml)
 
 ---
 
 ## License 👨‍⚖️
 
-This project is released under the [MIT License](https://github.com/omaralbeik/wwdc18/blob/master/LICENSE)
+This project is released under the [MIT License](https://github.com/omaralbeik/mnist-coreml/blob/master/LICENSE)
 */

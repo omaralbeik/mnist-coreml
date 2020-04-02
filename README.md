@@ -1,8 +1,8 @@
 # MNIST + CoreML
+
 Simple convolutional neural network to predict handwritten digits using Keras + CoreML built for WWDC '18 scholarship submission [**Accepted**]
 
 ![MNIST + CoreML](Assets/Demo.gif)
-
 
 ## What is a Convolutional Neural Network ? 🤔
 
@@ -51,6 +51,10 @@ Our model consists of 12 layers:
 
 Run the [**MNIST+CoreML.playground**](https://github.com/omaralbeik/wwdc18/tree/master/MNIST%2BCoreML.playground) on Xcode 9.0+ or Swift Playground app on the iPad
 
+Make sure disable `Enable Results` before running
+
+![EnableResults](Assets/EnableResults.jpg)
+
 ---
 
 ## Creating and Training The Model 👩‍🏫
@@ -78,6 +82,7 @@ The [coremltools](https://github.com/apple/coremltools) python package makes it 
 ---
 
 ## Contributing
+
 Your feedback is always appreciated and welcomed. If you find a bug in the source code, you can help me by submitting an issue. Even better you can submit a Pull Request with a fix :)
 
 ---
